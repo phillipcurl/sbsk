@@ -1,12 +1,27 @@
 <template>
-  <div>
-    <input type="search" v-model="value" :placeholder="placeholder" aria-label="Search" />
-    <!-- <img class="xs-absolute searchicon xs-r0 sm-l0" src="~/assets/bx-search.svg" /> -->
-    <ul>
-      <li v-for="(xx,i) in compResults" :key="i">
-        <a :href="`${xx._path}/`">{{xx.title}}</a>
-      </li>
-    </ul>
+  <div class="w-full max-w-sm">
+    <div class="flex items-center border-b border-b-2 border-gray-500 py-2 relative">
+      <input
+        class="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none"
+        type="search"
+        v-model="value"
+        :placeholder="placeholder"
+        aria-label="Search"
+      />
+      <!-- <button
+        class="flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded"
+        type="button"
+      >Search</button>-->
+      <ul
+        v-show="compResults.length > 0"
+        class="absolute left-0 right-0 bg-white z-50 px-2 py-2 shadow text-left"
+        style="top: 60px;"
+      >
+        <li v-for="(xx,i) in compResults" :key="i">
+          <nuxt-link :to="`${xx._path}/`" class="p-2">{{xx.title}}</nuxt-link>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 

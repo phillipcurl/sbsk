@@ -91,7 +91,6 @@ collections:
               name: emailsignup,
               widget: boolean,
             }
-          - { label: Full Page Alt Layout, name: altlayout, widget: boolean }
           - label: Menu Links
             name: menu
             widget: list

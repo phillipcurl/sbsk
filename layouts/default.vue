@@ -1,9 +1,16 @@
 <template>
-  <div class="w-screen h-screen flex flex-col items-center justify-center">
-    <main>
-      <nuxt />
-    </main>
-    <footer>
+  <div class="w-full h-full">
+    <header class="w-full text-center flex flex-col items-center py-6">
+      <nuxt-link to="/" exact>
+        <h3 class="text-5xl font-black mb-4">sbsk</h3>
+      </nuxt-link>
+      <nav>
+        <ul>
+          <li v-for="page in pages" :key="page._path">
+            <nuxt-link :to="page._path">{{page.title}}</nuxt-link>
+          </li>
+        </ul>
+      </nav>
       <site-search
         placeholder="Search"
         :compResults="compResults"
@@ -11,7 +18,11 @@
         :list="allPosts"
         event-name="searchChanged"
       />
-    </footer>
+    </header>
+    <main class="w-full container mx-auto px-4 py-8">
+      <nuxt />
+    </main>
+    <footer></footer>
   </div>
 </template>
 
@@ -40,22 +51,24 @@ export default {
 			return this.$store.state.pagination;
 		},
 		blogposts() {
-			return this.$store.state.blogPosts;
+			return this.$store.state.blog.blogPosts;
 		},
 		blogtitle() {
-			return this.$store.state.blogTitle;
+			return this.$store.state.blog.blogTitle;
 		},
 		allPosts() {
-			let posts = this.$store.state.blogPosts;
-			let pages = this.$store.state.allPages;
-			let both = posts.concat(pages);
-			return both;
+			let posts = this.$store.state.blog.blogPosts;
+			let pages = this.$store.state.pages.allPages;
+			return posts.concat(pages);
 		},
 		headerSiteName() {
 			return this.$store.state.siteInfo.sitename;
 		},
 		componentResults() {
 			return this.$store.state.results;
+		},
+		pages() {
+			return this.$store.state.pages.allPages;
 		},
 		crumb() {
 			return this.$store.state.theCrumb;

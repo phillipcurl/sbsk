@@ -114,6 +114,7 @@ export default {
   },
 
   plugins: [
+    '~/plugins/global-components',
     {
       src: '~/plugins/vue-lazyload',
       ssr: false

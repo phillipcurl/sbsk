@@ -1,18 +1,16 @@
 <template>
-  <main>
-    <div v-if="thumbnail">
+  <div>
+    <section v-if="thumbnail">
       <transition appear name="fade">
         <img :src="thumbnail" :alt="title" />
       </transition>
-    </div>
+    </section>
     <div>
-      <h1>{{title}}</h1>
-      <div v-html="$md.render(body)"></div>
+      <h1 class="text-6xl font-black">{{title}}</h1>
+      <md-wrapper :content="body" />
     </div>
-  </main>
+  </div>
 </template>
-
-
 
 <script>
 export default {
@@ -23,13 +21,13 @@ export default {
 
 		return post;
 	},
-	transition(to, from) {
-		if (!from) {
-			return 'slide-left';
-		} else {
-			return 'slide-right';
-		}
-	},
+	// transition(to, from) {
+	// 	if (!from) {
+	// 		return 'slide-left';
+	// 	} else {
+	// 		return 'slide-right';
+	// 	}
+	// },
 	head() {
 		return {
 			title: this.title + ' | ' + this.$store.state.siteInfo.sitename
