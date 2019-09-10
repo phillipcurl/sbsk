@@ -142,7 +142,7 @@ function getDynamicPaths(urlFilepathTable) {
       var filepathGlob = urlFilepathTable[url];
       return glob
         .sync(filepathGlob, { cwd: 'content' })
-        .map((filepath) => `${url}/${path.basename(filepath, '.json')}`);
+        .map((filepath) => `${url}/${path.basename(filepath, '.json')}/`);
     })
   );
 }
