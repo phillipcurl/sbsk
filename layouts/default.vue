@@ -1,55 +1,108 @@
 <template>
   <div>
-    <nuxt />
+    <main>
+      <nuxt />
+    </main>
+    <footer>
+      <site-search
+        placeholder="Search"
+        :compResults="compResults"
+        :keys="keys"
+        :list="allPosts"
+        event-name="searchChanged"
+      />
+    </footer>
   </div>
 </template>
 
+<script>
+import SiteSearch from '~/components/SiteSearch';
+
+export default {
+	data() {
+		return {
+			results: [],
+			keys: [
+				{
+					name: 'title',
+					weight: 0.3
+				},
+				{
+					name: 'body',
+					weight: 0.7
+				}
+			],
+			compResults: []
+		};
+	},
+	computed: {
+		paginate() {
+			return this.$store.state.pagination;
+		},
+		blogposts() {
+			return this.$store.state.blogPosts;
+		},
+		blogtitle() {
+			return this.$store.state.blogTitle;
+		},
+		allPosts() {
+			let posts = this.$store.state.blogPosts;
+			let pages = this.$store.state.allPages;
+			let both = posts.concat(pages);
+			return both;
+		},
+		headerSiteName() {
+			return this.$store.state.siteInfo.sitename;
+		},
+		componentResults() {
+			return this.$store.state.results;
+		},
+		crumb() {
+			return this.$store.state.theCrumb;
+		}
+	},
+	mounted() {
+		this.$on('searchChanged', (results) => {
+			this.compResults = results;
+		});
+	},
+	components: {
+		SiteSearch
+	}
+};
+</script>
+
 <style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+.slide-left-enter,
+.slide-right-leave-active {
+	transform: translate(50%, 0);
+	opacity: 0;
+	transition: all 0.25s;
 }
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
+.slide-left-leave-active,
+.slide-right-enter {
+	transform: translate(-50%, 0);
+	opacity: 0;
+	transition: all 0.25s;
 }
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.slide-down-enter,
+.slide-up-leave-active {
+	transform: translate(0, 50%);
+	opacity: 1;
+	transition: all 0.25s;
 }
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+.slide-down-leave-active,
+.slide-up-enter {
+	transform: translate(0, -50%);
+	opacity: 1;
+	transition: all 0.25s;
 }
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.5s;
+	transition-delay: 0.3s;
 }
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+	opacity: 0;
 }
 </style>
