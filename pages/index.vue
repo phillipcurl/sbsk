@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>sbsk</h1>
+    <h1 class="text-6xl font-black">sbsk</h1>
   </div>
 </template>
 

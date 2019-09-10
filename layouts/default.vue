@@ -25,11 +25,11 @@ export default {
 			keys: [
 				{
 					name: 'title',
-					weight: 0.3
+					weight: 0.7
 				},
 				{
 					name: 'body',
-					weight: 0.7
+					weight: 0.3
 				}
 			],
 			compResults: []
