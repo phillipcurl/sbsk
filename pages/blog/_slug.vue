@@ -7,6 +7,9 @@
     </section>
     <div>
       <h1 class="text-6xl font-black">{{title}}</h1>
+      <div class="mb-3">
+        <time>{{ date }}</time>
+      </div>
       <no-ssr>
         <div class="xs-mt-5 bold">
           <ul class="list-unstyled xs-flex xs-flex-align-center">
@@ -18,7 +21,6 @@
                 >{{this.$store.state.theCategory}}</nuxt-link>
               </div>
             </li>
-            <li class="xs-inline-block">{{ date }}</li>
           </ul>
         </div>
       </no-ssr>
@@ -61,9 +63,6 @@ export default {
 		},
 		allBlogPosts() {
 			return this.$store.state.blogPosts;
-		},
-		navbarheight() {
-			return this.$store.state.navheight;
 		}
 	}
 };

@@ -35,18 +35,17 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
+
   /*
    ** Customize the progress-bar color
    */
   loading: { color: '#fff' },
+
   /*
    ** Global CSS
    */
   css: ['~/assets/css/main.css'],
-  /*
-   ** Plugins to load before mounting the App
-   */
-  // plugins: [],
+
   /*
    ** Nuxt.js dev-modules
    */
@@ -110,6 +109,7 @@ export default {
   },
 
   generate: {
+    fallback: true,
     routes: dynamicRoutes
   },
 
@@ -137,6 +137,7 @@ export default {
  * @param {*} urlFilepathTable
  */
 function getDynamicPaths(urlFilepathTable) {
+  // if (process.argv.includes('--spa')) return [];
   return [].concat(
     ...Object.keys(urlFilepathTable).map((url) => {
       var filepathGlob = urlFilepathTable[url];
