@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="search" v-model="value" :placeholder="placeholder" />
+    <input type="search" v-model="value" :placeholder="placeholder" aria-label="Search" />
     <!-- <img class="xs-absolute searchicon xs-r0 sm-l0" src="~/assets/bx-search.svg" /> -->
     <ul>
       <li v-for="(xx,i) in compResults" :key="i">
