@@ -58,6 +58,16 @@ collections:
           widget: 'image',
           required: false,
         }
+      - {
+          label: 'Layout',
+          name: 'layout',
+          widget: 'relation',
+          collection: 'pagelayouts',
+          searchFields: ['title'],
+          valueField: 'title',
+          displayFields: ['title'],
+          required: false,
+        }
       - { label: 'Body', name: 'body', widget: 'markdown' }
   - label: 'Setup'
     name: 'setup'
@@ -114,3 +124,11 @@ collections:
           widget: string,
           required: false,
         }
+  - label: 'Layouts'
+    name: 'pagelayouts'
+    folder: 'content/layouts/posts' # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: '{{slug}}' # Filename template, e.g., YYYY-MM-DD-title.md
+    format: 'json'
+    fields:
+      - { label: Title, name: title, widget: string }

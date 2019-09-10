@@ -17,7 +17,7 @@
 <script>
 export default {
 	async asyncData({ params, app, payload, route, store }) {
-		let post = await import('~/content/page/posts/' + params.slug + '.json');
+		let post = await import('~/content/page/posts/' + params.page + '.json');
 		console.log(post);
 		await store.commit('SET_TITLE', post.title);
 
