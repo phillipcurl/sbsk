@@ -1,0 +1,59 @@
+{
+  "name": "sbsk",
+  "version": "1.0.0",
+  "description": "The Small Business Starter Kit; provided by Cosmic",
+  "author": "Cosmic Digital",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "serve": "nuxt",
+    "build": "nuxt build --no-lock",
+    "build:api": "netlify-lambda build src/sendgrid",
+    "start": "nuxt start",
+    "generate": "nuxt generate --no-lock",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "test": "jest"
+  },
+  "lint-staged": {
+    "*.{js,vue}": "eslint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "@bazzite/nuxt-netlify": "latest",
+    "@nuxtjs/axios": "latest",
+    "@nuxtjs/dotenv": "latest",
+    "@nuxtjs/google-analytics": "latest",
+    "@nuxtjs/pwa": "latest",
+    "@nuxtjs/sitemap": "latest",
+    "@nuxtjs/markdownit": "github:syffs/nuxtv2-markdownit",
+    "@sendgrid/client": "^6.3.0",
+    "fuse.js": "^3.2.1",
+    "netlify-lambda": "^1.4.3",
+    "nuxt": "latest",
+    "vue-lazyload": "^1.2.6"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "latest",
+    "@nuxtjs/eslint-module": "latest",
+    "@nuxtjs/tailwindcss": "latest",
+    "@vue/test-utils": "latest",
+    "babel-eslint": "latest",
+    "babel-jest": "latest",
+    "eslint": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-plugin-nuxt": "latest",
+    "eslint-plugin-prettier": "latest",
+    "glob": "^7.1.2",
+    "husky": "latest",
+    "jest": "latest",
+    "lint-staged": "latest",
+    "netlify-cms": "latest",
+    "nuxt-netlify-cms": "latest",
+    "prettier": "latest",
+    "vue-jest": "latest"
+  }
+}
